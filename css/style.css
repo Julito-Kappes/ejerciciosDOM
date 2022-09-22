@@ -1,5 +1,4 @@
-/*Reset css*/
-/* -- son variables*/
+/* **********     Reset CSS     ********** */
 :root {
   --main-font: sans-serif;
   --font-size: 16px;
@@ -14,7 +13,7 @@ html {
   box-sizing: border-box;
   font-family: var(--main-font);
   font-size: var(--font-size);
-  scroll-behavior: smooth; /*transicion entre secciones tranqui*/
+  scroll-behavior: smooth;
 }
 
 *,
@@ -28,17 +27,24 @@ body {
   overflow-x: hidden;
 }
 
-img {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
 
-/*****************  Menu de hamburguesa  *****************/
+.flex-row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* **********     menu-hamburguesa     ********** */
 
 .header {
   position: sticky;
-  top: 0;
   z-index: 997;
+  top: 0;
   padding: 1rem;
   background-color: var(--main-color);
   color: var(--second-color);
@@ -68,25 +74,34 @@ img {
   left: 0;
   right: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow-y: auto;
   background-color: var(--second-modal-color);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.3s ease, opacity 0.5s ease;
-
-  /*de arriba*/
-  /*transform: translate(-100%, 0);*/
+  /* De arriba */
+  transform: translate(0, -100%);
+  /* De abajo */
+  transform: translate(0, 100%);
+  /* De la derecha */
+  transform: translate(100%, 0);
+  /* De la izquierda */
+  transform: translate(-100%, 0);
 }
 
 .panel.is-active {
-  /*transform: translate(0, 0);*/
-  visibility: visible;
+  transform: translate(0, 0);
   opacity: 1;
+  visibility: visible;
 }
 
 .panel-btn {
   position: fixed;
-  z-index: 999; /*para que el boton aparezca siempre adelante*/
+  z-index: 999;
   bottom: 1vh;
   right: 1vw;
   width: 4rem;
@@ -120,32 +135,27 @@ img {
 
 .menu a:hover {
   font-weight: bold;
-
   color: var(--second-color);
   background-color: var(--main-modal-color);
 }
 
-/*****************  Eventos del teclado  *****************/
+/* **********     Eventos del Teclado     ********** */
 
 .stage {
   display: flex;
   min-height: 50vh;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--main-color);
   background-color: var(--second-color);
 }
 
 .ball {
   margin: auto;
-  height: 4rem;
   width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background-color: var(--main-color);
 }
 
-/*****************  Btn top scroll  *****************/
-
+/* **********     ScrollTopButton     ********** */
 .top-scroll-btn {
   position: fixed;
   z-index: 999;
@@ -174,8 +184,7 @@ img {
   opacity: 0;
 }
 
-/*****************  Btn dark theme  *****************/
-
+/* **********     DarkThemeButton     ********** */
 .dark-theme-btn {
   position: fixed;
   z-index: 999;
@@ -204,32 +213,7 @@ img {
   color: var(--main-color);
 }
 
-/*****************  Responsive  *****************/
-
-#youtube {
-  padding-bottom: 5px;
-}
-
-.responsive a {
-  padding: 2rem;
-  width: inherit;
-  display: block;
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: var(--second-color);
-  background-color: var(--main-modal-color);
-  transition: all 0.3s ease;
-}
-
-.responsive a:hover {
-  font-weight: bold;
-
-  color: var(--main-color);
-  background-color: var(--second-modal-color);
-}
-
-/*****************  Network Status  *****************/
-
+/* **********     Network Status     ********** */
 .online,
 .offline {
   position: sticky;
@@ -247,8 +231,7 @@ img {
   background-color: #b71c1c;
 }
 
-/*****************  Network Status  *****************/
-
+/* **********     SearchFilters     ********** */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -270,19 +253,18 @@ img {
 }
 
 .filter {
-  /*display: none;*/
-
+  /* display: none; */
   visibility: hidden;
   opacity: 0;
   order: 1;
 }
 
-/*****************  Responsive sliders  *****************/
-
+/* **********     Responsive Slider     ********** */
 .slider {
   position: relative;
   width: 80%;
   margin: 1rem auto;
+  /* border: thin solid black; */
   text-align: center;
 }
 
@@ -297,8 +279,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  visibility: hidden;
   opacity: 0;
+  visibility: hidden;
   transition: opacity 1s ease;
 }
 
@@ -310,15 +292,15 @@ img {
 }
 
 .slider-slide.active {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
 }
 
 .slider-btns {
-  display: flex;
   position: absolute;
   width: 100%;
-  top: 50%;
+  top: calc(50% - 2rem);
+  display: flex;
   justify-content: space-between;
   font-size: 3rem;
   font-weight: bold;
@@ -337,11 +319,10 @@ img {
 }
 
 .slider a:hover {
-  background-color: #4d4d4d;
+  color: #4d4d4d;
 }
 
-/*****************  ScrollSpy  *****************/
-
+/* **********     ScrollSpy     ********** */
 @media screen and (min-width: 1024px) {
   body {
     display: grid;
@@ -349,7 +330,7 @@ img {
     grid-template-rows: 4rem auto;
     grid-template-areas:
       "header header"
-      "main   panel";
+      "main panel";
   }
 
   main {
@@ -370,6 +351,7 @@ img {
     transform: translate(0, 0);
     opacity: 1;
     visibility: visible;
+    overflow-y: auto;
   }
 
   .panel-btn {
@@ -382,8 +364,8 @@ img {
   }
 
   .menu a {
-    font-size: 1rem;
     padding: 0.75rem;
+    font-size: 1rem;
   }
 
   .menu a:hover,
@@ -392,14 +374,13 @@ img {
     background-color: var(--main-color);
   }
 
-  .top-scroll-btn {
+  .scroll-top-btn {
     right: initial;
     left: calc(4.25rem + 1vw);
   }
 }
 
-/*****************  ScrollSpy  *****************/
-
+/* **********     ContactForm Validations     ********** */
 .contact-form {
   --form-ok-color: #4caf50;
   --form-error-color: #f44336;
@@ -477,4 +458,25 @@ img {
     visibility: visible;
     opacity: 1;
   }
+}
+
+#youtube {
+  padding-bottom: 5px;
+}
+.responsive a {
+  padding: 2rem;
+  width: inherit;
+  display: block;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--second-color);
+  background-color: var(--main-modal-color);
+  transition: all 0.3s ease;
+}
+
+.responsive a:hover {
+  font-weight: bold;
+
+  color: var(--main-color);
+  background-color: var(--second-modal-color);
 }
